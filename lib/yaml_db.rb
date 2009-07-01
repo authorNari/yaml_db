@@ -51,7 +51,8 @@ module YamlDb::Utils
 		records.each do |record|
 			columns.each do |column|
 				next if is_boolean(record[column])
-				record[column] = (record[column] == 't' or record[column] == '1')
+				record[column] = true if (record[column] == 't' or record[column] == '1')
+				record[column] = false if (record[column] == 'f' or record[column] == '0')
 			end
 		end
 		records
